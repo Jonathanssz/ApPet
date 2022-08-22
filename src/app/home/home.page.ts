@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DatabaseService } from '../services/database.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +8,10 @@ import { DatabaseService } from '../services/database.service';
 })
 export class HomePage {
 
-  constructor(private database: DatabaseService) {}
+  constructor(public nav: NavController) {}
 
-  dados() {
-    this.database.getInformacao();
+  abrirPag(x) {
+    this.nav.navigateForward(x);
   }
 
 }

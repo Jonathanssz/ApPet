@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>
       ApPet
     </ion-title>
@@ -11,15 +14,15 @@
   <ion-card-header class="ion-text-center">
     <ion-card-title>
       <ion-text color="dark">
-        <h2>Listagem dos Dados</h2>
+        <h2>List by Prices</h2>
       </ion-text>
     </ion-card-title>
   </ion-card-header>
 
-  <ion-button expand="block" (click)="abrirPag('page1')">Ordenação por ID</ion-button>
-  <br>
-  <ion-button expand="block" (click)="abrirPag('page2')">Ordenação por Type</ion-button>
-  <br>
-  <ion-button expand="block" (click)="abrirPag('page3')">Ordenação por Price</ion-button>
+  <ion-list *ngFor="let pet of listaPets">
+    <ion-item>
+      {{pet.price}}
+    </ion-item>
+  </ion-list>
 
 </ion-content>
