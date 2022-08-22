@@ -23,7 +23,13 @@ export class Page1Page implements OnInit {
     return new Promise( (resolve, reject) => {
       this.database.buscarInformacao().subscribe(
         (dados: any) => {
-          this.listaPets = dados;
+          this.listaPets = dados.sort(function (a, b) {
+            if(a.id < b.id) {
+              return -1;
+            } else {
+              return true;
+            }
+          });
           resolve(dados.json);
         },
         error => {
@@ -32,13 +38,6 @@ export class Page1Page implements OnInit {
         }
       );
     }).catch(e => console.error(e));
-  }
-
-  id: string = 'id';
-  reverse: boolean = false;
-  ordem(id) {
-    this.id = id;
-    this.reverse = !this.reverse
   }
 
 }

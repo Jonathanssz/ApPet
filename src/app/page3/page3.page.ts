@@ -23,7 +23,13 @@ export class Page3Page implements OnInit {
     return new Promise( (resolve, reject) => {
       this.database.buscarInformacao().subscribe(
         (dados: any) => {
-          this.listaPets = dados;
+          this.listaPets = dados.sort(function (a, b) {
+            if(a.price < b.price) {
+              return -1;
+            } else {
+              return true;
+            }
+          });
           resolve(dados.json);
         },
         error => {
